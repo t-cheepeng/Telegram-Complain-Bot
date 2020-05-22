@@ -39,6 +39,7 @@ function buildModeMenu() {
     telegrafBot.telegram.setWebhook(process.env.HEROKU_URL + process.env.BOT_TOKEN);
 
     app.get('/', (req, res) => {
+        console.log(req.message);
         res.send(req);
     });
 
