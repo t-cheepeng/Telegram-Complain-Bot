@@ -63,9 +63,9 @@ function start() {
     // console.log("Starting webhook");
     // telegrafBot.startWebhook('/' + process.env.BOT_TOKEN, null, process.env.PORT);
 
-    require('http')
-        .createServer(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN))
-        .listen(process.env.PORT);
+    // require('http')
+    //     .createServer(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN))
+    //     .listen(process.env.PORT);
 
     console.log("End deployment process");
 }
