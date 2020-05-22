@@ -60,8 +60,8 @@ function start() {
         return ctx.reply(constructedMessage);
     });
 
-    console.log("Starting webhook");
-    telegrafBot.startWebhook('/' + process.env.BOT_TOKEN, null, process.env.PORT);
+    // console.log("Starting webhook");
+    // telegrafBot.startWebhook('/' + process.env.BOT_TOKEN, null, process.env.PORT);
 
     require('http')
         .createServer(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN))
