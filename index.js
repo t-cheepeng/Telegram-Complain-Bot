@@ -3,6 +3,8 @@ require('dotenv').config();
 const Telegraf = require('telegraf');
 const TelegrafInlineMenu = require('telegraf-inline-menu');
 const token = require('./token/token.js');
+const express = require('express');
+const bodyParser = require('body-parser');
 
 let telegrafBot;
 let modeMenu;
@@ -40,13 +42,14 @@ function buildModeMenu() {
     telegrafBot.telegram.setWebhook(process.env.HEROKU_URL + process.env.BOT_TOKEN);
 
     app.post('/', (req, res) => {
-        console.log("Req came in");
+        console.log("Request came in");
         telegrafBot.handleUpdate(req.body);
+        res.sendStatus(200);
     });
 
-    console.log("Express app listening to port");
-    app.listen(process.env.PORT);
-
+    const server = app.listen(process.env.PORT, () => {
+        console.log("Web server started at http://%s:%s", server.address().address, server.address().port);
+    });
 }
 
 function start() {
@@ -62,13 +65,8 @@ function start() {
         return ctx.reply(constructedMessage);
     });
 
-    // console.log("Starting webhook");
-    // telegrafBot.startWebhook('/' + process.env.BOT_TOKEN, null, process.env.PORT);
+    console.log("Starting webhook");
     telegrafBot.launch();
-
-    // require('http')
-    //     .createServer(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN))
-    //     .listen(process.env.PORT);
     console.log("End deployment process");
 }
 
