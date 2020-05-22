@@ -59,7 +59,16 @@ function start() {
         const constructedMessage = `${STANDARD_PREAMBLE.YOU_COMPLAINED + strippedMessage + "\n\n" + STANDARD_PREAMBLE.BOT_REPLY_PREAMBLE + (mode === MODE.LENIENT_MODE ? LENIENT_REPLIES[replyIdx] : HARSH_REPLIES[replyIdx])}`;
         return ctx.reply(constructedMessage);
     });
-    telegrafBot.launch();
+
+    console.log("Starting webhook");
+    telegrafBot.startWebhook('/' + process.env.BOT_TOKEN, null, process.env.PORT);
+
+    require('http')
+        .createServer(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN))
+        .listen(process.env.PORT);
+
+    console.log("End deployment process");
+}
 
 init();
 start();
