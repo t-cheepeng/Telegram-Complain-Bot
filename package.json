@@ -10,6 +10,7 @@
   "author": "cp",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "telegraf": "^3.38.0",
     "telegraf-inline-menu": "^4.0.1"
   }
