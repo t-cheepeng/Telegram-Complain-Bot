@@ -11,6 +11,7 @@ let mode = MODE.LENIENT_MODE;
 function init() {
     process.env.BOT_TOKEN = token.getBotToken('./api_key/api_key.txt');
     telegrafBot = new Telegraf(process.env.BOT_TOKEN);
+    console.log("Building telegram bot menu")
     buildModeMenu();
 }
 
