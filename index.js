@@ -1,4 +1,5 @@
 require('./const.js');
+require('dotenv').config();
 const Telegraf = require('telegraf');
 const TelegrafInlineMenu = require('telegraf-inline-menu');
 const token = require('./token/token.js');
