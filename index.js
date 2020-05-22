@@ -9,8 +9,8 @@ let modeMenu;
 let mode = MODE.LENIENT_MODE;
 
 function init() {
-    process.env.BOT_TOKEN = token.getBotToken('./api_key/api_key.txt');
-    telegrafBot = new Telegraf(process.env.BOT_TOKEN);
+    console.log("Initializing telegraf bot")
+    telegrafBot = new Telegraf(process.env.BOT_TOKEN, {webhookReply: true});
     console.log("Building telegram bot menu")
     buildModeMenu();
 }
@@ -38,7 +38,7 @@ function buildModeMenu() {
     app.use(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN));
     telegrafBot.telegram.setWebhook(process.env.HEROKU_URL + process.env.BOT_TOKEN);
 
-    app.get('/', (req, res) => {
+    app.get('/' + process.env.BOT_TOKEN, (req, res) => {
         console.log(req.message);
         res.send(req);
     });
