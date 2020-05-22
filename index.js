@@ -39,7 +39,7 @@ function buildModeMenu() {
     telegrafBot.telegram.setWebhook(process.env.HEROKU_URL + process.env.BOT_TOKEN);
 
     app.get('/', (req, res) => {
-        res.send('Hello World');
+        res.send(req);
     });
 
     console.log("Express app listening to port");
