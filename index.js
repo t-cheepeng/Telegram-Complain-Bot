@@ -35,17 +35,16 @@ function buildModeMenu() {
     });
     console.log("Setting webhook to HEROKU_URL and BOT_TOKEN");
     
-    app.use(bodyParser.json());
     app.use(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN));
     telegrafBot.telegram.setWebhook(process.env.HEROKU_URL + process.env.BOT_TOKEN);
-    
+
+    app.get('/', (req, res) => {
+        res.send('Hello World');
+    });
+
     console.log("Express app listening to port");
     app.listen(process.env.PORT);
 
-    app.post('/' + process.env.BOT_TOKEN, (req, res) => {
-        console.log("Request received: " + req);
-        res.sendStatus(200);
-    });
 }
 
 function start() {
