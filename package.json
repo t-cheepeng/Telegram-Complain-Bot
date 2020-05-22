@@ -1,0 +1,15 @@
+{
+  "name": "test_cpcp_bot",
+  "version": "1.0.0",
+  "description": "a test telegram bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cp",
+  "license": "ISC",
+  "dependencies": {
+    "telegraf": "^3.38.0",
+    "telegraf-inline-menu": "^4.0.1"
+  }
+}
