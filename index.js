@@ -47,7 +47,6 @@ function start() {
         const constructedMessage = `${STANDARD_PREAMBLE.YOU_COMPLAINED + strippedMessage + "\n\n" + STANDARD_PREAMBLE.BOT_REPLY_PREAMBLE + (mode === MODE.LENIENT_MODE ? LENIENT_REPLIES[replyIdx] : HARSH_REPLIES[replyIdx])}`;
         return ctx.reply(constructedMessage);
     });
-<<<<<<< HEAD
     telegrafBot.launch();
 
 init();
