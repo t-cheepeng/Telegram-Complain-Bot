@@ -36,11 +36,12 @@ function buildModeMenu() {
     console.log("Setting webhook to HEROKU_URL and BOT_TOKEN");
     
     app.use(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN));
+    app.use(bodyParser.json());
     telegrafBot.telegram.setWebhook(process.env.HEROKU_URL + process.env.BOT_TOKEN);
 
-    app.get('/' + process.env.BOT_TOKEN, (req, res) => {
-        console.log(req.message);
-        res.send(req);
+    app.post('/', (req, res) => {
+        console.log("Req came in");
+        telegrafBot.handleUpdate(req.body);
     });
 
     console.log("Express app listening to port");
@@ -67,7 +68,6 @@ function start() {
     // require('http')
     //     .createServer(telegrafBot.webhookCallback('/' + process.env.BOT_TOKEN))
     //     .listen(process.env.PORT);
-
     console.log("End deployment process");
 }
 
