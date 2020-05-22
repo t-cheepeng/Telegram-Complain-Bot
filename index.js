@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 let telegrafBot;
 let modeMenu;
 let mode = MODE.LENIENT_MODE;
+let app = express();
 
 function init() {
     console.log("Initializing telegraf bot")
