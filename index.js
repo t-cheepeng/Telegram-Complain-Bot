@@ -46,6 +46,12 @@ function buildModeMenu() {
         telegrafBot.handleUpdate(req.body);
         res.sendStatus(200);
     });
+    
+    app.get('/', (req, res) => {
+        console.log("Request came in via GET");
+        telegrafBot.handleUpdate(req.body);
+        res.sendStatus(200);
+    });
 
     const server = app.listen(process.env.PORT, () => {
         console.log("Web server started at http://%s:%s", server.address().address, server.address().port);
